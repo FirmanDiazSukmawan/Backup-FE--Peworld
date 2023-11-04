@@ -10,8 +10,9 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { ToastContainer } from "react-toastify";
 
-export async function getServerSideProps() {
-  const initialData = {
+export default function Index() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [data, setData] = useState({
     nama: "",
     email: "",
     perusahaan: "",
@@ -19,18 +20,7 @@ export async function getServerSideProps() {
     phone: "",
     password: "",
     confirmPassword: "",
-  };
-
-  return {
-    props: {
-      initialData,
-    },
-  };
-}
-
-export default function Index(initialData) {
-  const [showPassword, setShowPassword] = useState(false);
-  const [data, setData] = useState(initialData);
+  });
   const dispatch = useDispatch();
   const route = useRouter();
 
@@ -175,16 +165,16 @@ export default function Index(initialData) {
                         onChange={handleChange}
                         className="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
-                      {/* <button
-                    className="absolute top-0 right-0 m-2"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? (
-                      <i className="bi bi-eye"></i>
-                    ) : (
-                      <i className="bi bi-eye-slash"></i>
-                    )}
-                  </button> */}
+                      <button
+                        className="absolute top-0 right-0 m-2"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? (
+                          <i className="bi bi-eye"></i>
+                        ) : (
+                          <i className="bi bi-eye-slash"></i>
+                        )}
+                      </button>
                     </div>
                     <label
                       htmlFor="password"
@@ -202,16 +192,16 @@ export default function Index(initialData) {
                         onChange={handleChange}
                         className="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
-                      {/* <button
-                    className="absolute top-0 right-0 m-2"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? (
-                      <i className="bi bi-eye"></i>
-                    ) : (
-                      <i className="bi bi-eye-slash"></i>
-                    )}
-                  </button> */}
+                      <button
+                        className="absolute top-0 right-0 m-2"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? (
+                          <i className="bi bi-eye"></i>
+                        ) : (
+                          <i className="bi bi-eye-slash"></i>
+                        )}
+                      </button>
                     </div>
                     <div className="flex flex-col items-center justify-center pt-2">
                       <button
