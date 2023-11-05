@@ -17,6 +17,29 @@ import noData from "../../public/noData";
 import { Controls, Player } from "@lottiefiles/react-lottie-player";
 import Head from "next/head";
 
+export async function getServerSideProps(context) {
+  try {
+    const { query } = context;
+    const searchQuery = query?.search || "";
+    // console.log(query);
+    const res = await axios?.get(
+      `${url}/workers?sort=ASC&search=${searchQuery}`
+    );
+    const workers = res?.data;
+
+    // console.log(workers);
+
+    return {
+      props: { searchQuery, workers },
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      props: { workers: [] },
+    };
+  }
+}
+
 export default function Page({ workers, searchQuery }) {
   // console.log(noData);
   const [search, setSearch] = useState(searchQuery);
@@ -296,27 +319,4 @@ export default function Page({ workers, searchQuery }) {
       </div>
     </>
   );
-}
-
-export async function getServerSideProps(context) {
-  try {
-    const { query } = context;
-    const searchQuery = query?.search || "";
-    // console.log(query);
-    const res = await axios?.get(
-      `${url}/workers?sort=ASC&search=${searchQuery}`
-    );
-    const workers = res?.data;
-
-    // console.log(workers);
-
-    return {
-      props: { searchQuery, workers },
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      props: { workers: [] },
-    };
-  }
 }
