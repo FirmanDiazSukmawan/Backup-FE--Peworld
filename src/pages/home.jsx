@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import img from "../../assets/foto2.png";
 import Navbar from "@/component/Navbar/Navbar";
 import Footer from "@/component/Footer/Footer";
 import { Dropdown, DropdownButton, Pagination } from "react-bootstrap";
@@ -14,7 +13,7 @@ import axios from "axios";
 import { url } from "@/redux/baseUrl/url";
 import { Button } from "@nextui-org/react";
 import { useRouter } from "next/router";
-import noData from "../../../public/noData";
+import noData from "../../public/noData";
 import { Controls, Player } from "@lottiefiles/react-lottie-player";
 import Head from "next/head";
 
