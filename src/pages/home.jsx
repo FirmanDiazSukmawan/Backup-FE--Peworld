@@ -279,7 +279,7 @@ export default function Page({ workers, searchQuery }) {
             )}
             <Pagination>
               {Array.from({
-                length: Math.ceil(workers?.data.length / workerPerPage),
+                length: Math.ceil(workers?.data?.length / workerPerPage),
               }).map((_, index) => (
                 <Pagination.Item
                   key={index}
